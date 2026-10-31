@@ -1,0 +1,54 @@
+function onLoad() {
+
+    // Hide Description field when form loads
+    g_form.setDisplay('description', false);
+
+    g_form.addInfoMessage(
+        'Incident form loaded successfully'
+    );
+
+}
+
+
+// onChange - Incident State
+function onChange(control, oldValue, newValue, isLoading) {
+
+    if (isLoading || newValue == '') {
+        return;
+    }
+
+    if (newValue == '6') {
+
+        g_form.addInfoMessage(
+            'Incident is Resolved'
+        );
+
+    } else {
+
+        g_form.addInfoMessage(
+            'Incident State Updated'
+        );
+
+    }
+
+}
+
+
+// onSubmit - Form Validation
+function onSubmit() {
+
+    var shortDesc = g_form.getValue('short_description');
+
+    if (shortDesc == '') {
+
+        g_form.addErrorMessage(
+            'Short Description is required'
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
